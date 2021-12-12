@@ -12,6 +12,7 @@ public class Stone : MonoBehaviour
     public int steps;
 
     bool isMoving;
+    public bool IsInPosition;
 
     void Update()
     {
@@ -45,8 +46,13 @@ public class Stone : MonoBehaviour
             steps--;
             //routePosition++;
 
-        }    
-
+        }
+        var a = GameManager.Instance.listofstones;
+        foreach (var item in a)
+        {
+            item.GetComponent<Collider>().enabled = true;
+            item.GetComponent<Collider>().isTrigger = true;
+        }
         isMoving = false;
     }
 
